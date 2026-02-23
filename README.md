@@ -7,8 +7,8 @@ Proyek Next.js dengan shadcn/ui dan Tailwind CSS.
 - **Next.js 16** - Framework React
 - **shadcn/ui** - Komponen UI yang dapat disesuaikan
 - **Tailwind CSS 4** - Utility-first CSS
-- **TypeScript** - Bahasa pemrograman
-- **Groq-sdk**
+- **JavaScript : TypeScript** - Bahasa pemrograman
+- **Groq-sdk** --
 
 ## Mulai
 
