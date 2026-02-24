@@ -128,3 +128,5 @@ Admin Mode
    ├── Platform Analytics
    ├── System Moderation
    └── Global Configuration
+
+## 🏗️ User Flow

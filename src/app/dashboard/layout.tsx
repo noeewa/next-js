@@ -1,6 +1,7 @@
 import { Children } from "react";
+import { Props } from '@/type/type'
 
-export default function Main({Children}) {
+export default function Main({Children} : Props) {
 
     return(
     <nav>
