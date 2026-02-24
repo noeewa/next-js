@@ -55,7 +55,7 @@ npx shadcn@latest add card
 - [Tailwind CSS](https://tailwindcss.com)
 
 
-## 🏗️ Architecture
+## 🏗️ 1. Architecture
 
 ```
 ┌────────────────────┐
@@ -82,7 +82,7 @@ npx shadcn@latest add card
      │ Cerebras / OpenAI) │
      └────────────────────┘
 ```
-## 🏗️ Information Architecture
+## 🏗️ 2. Information Architecture
 
 
 Marketing Mode (Pre-Auth)
@@ -129,4 +129,27 @@ Admin Mode
    ├── System Moderation
    └── Global Configuration
 
-## 🏗️ User Flow
+## 🏗️ 3. User Flow Client
+
+User
+ └── Landing (/)
+     ├── Login (/login)
+     ├── Register (/register)
+     └── Dashboard (/dashboard)
+         ├── Create Project (/dashboard/create)
+         └── Project Console (/dashboard/[projectName])
+             ├── Upload
+             ├── Preview
+             ├── Payment Status
+             └── Settings
+                 ↓
+             /api/ai → AI Provider
+
+## 🏗️ 4. User Flow Admin
+
+User
+ └── Landing (/)
+     ├── Login (/login)
+     └── Dashboard (/dashboard)
+         ├── Approve Project (/dashboard)
+         └── Finance Console (/dashboard)
