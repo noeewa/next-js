@@ -53,3 +53,32 @@ npx shadcn@latest add card
 - [Next.js Docs](https://nextjs.org/docs)
 - [shadcn/ui](https://ui.shadcn.com)
 - [Tailwind CSS](https://tailwindcss.com)
+
+
+## 🏗️ Architecture
+
+```
+┌────────────────────┐
+│    User Browser    │
+└─────────┬──────────┘
+          │
+     ┌────▼────┐
+     │ Next.js │  (App Router)
+     │ Frontend│  (page.tsx, layout.tsx)
+     └────┬────┘
+          │
+     ┌────▼─────────────────────┐
+     │ Firebase Auth (Client)   │
+     │ + Firebase SDK           │
+     └────┬─────────────────────┘
+          │
+     ┌────▼──────────────────────┐
+     │ Next.js Route Handler API │
+     │ /api/ai/route.ts          │
+     └────┬──────────────────────┘
+          │
+     ┌────▼───────────────┐
+     │ AI APIs (Groq /    │
+     │ Cerebras / OpenAI) │
+     └────────────────────┘
+```
