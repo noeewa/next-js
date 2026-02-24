@@ -82,3 +82,49 @@ npx shadcn@latest add card
      │ Cerebras / OpenAI) │
      └────────────────────┘
 ```
+## 🏗️ Information Architecture
+
+
+Marketing Mode (Pre-Auth)
+   ├── Landing Page
+   ├── Features
+   ├── CTA / Register
+   └── Public Information
+
+Authentication Mode
+   ├── Login (Email / Google)
+   ├── Register
+   ├── Session Management
+   └── Role Detection (User / Admin)
+
+User Product Mode
+   ├── Dashboard Overview
+   ├── Knowledge Base
+   │     ├── Upload Document
+   │     ├── Training Status
+   │     └── Document Management
+   ├── AI Preview
+   │     ├── Chat Simulation
+   │     └── Context Injection
+   ├── Form Builder
+   │     ├── Field Builder
+   │     ├── Schema Storage
+   │     └── Submission Management
+   ├── Embed System
+   │     ├── Script Generator
+   │     ├── Floating Button
+   │     └── Iframe Injection
+   └── Settings
+         ├── Chatbot Config
+         ├── Theme / Branding
+         └── Account Management
+
+Public Runtime Mode
+   ├── Chatbot Embed (Client Website)
+   └── Public Form Page
+
+Admin Mode
+   ├── User Management
+   ├── Platform Analytics
+   ├── System Moderation
+   └── Global Configuration
