@@ -143,24 +143,27 @@ export default function PaymentPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-start gap-4">
         <Link href="/dashboard/create">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="mt-0.5">
             <ArrowLeft className="h-5 w-5" />
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold">Pilih Paket</h1>
-          <p className="text-muted-foreground">
-            Pilih paket yang sesuai dengan kebutuhan Anda
+          <h1 className="text-3xl font-bold">Pilih Paket Langganan</h1>
+          <p className="text-muted-foreground text-sm">
+            Pilih paket yang sesuai dengan kebutuhan dan budget Anda
           </p>
         </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Plans */}
-        <div className="lg:col-span-2 space-y-4">
-          <h2 className="text-lg font-semibold">Paket Langganan</h2>
+        <div className="lg:col-span-2 space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold mb-1">Paket Langganan</h2>
+            <p className="text-muted-foreground text-sm">Pilih paket yang paling sesuai</p>
+          </div>
           <div className="grid gap-4">
             <RadioGroup
               value={selectedPlan}
@@ -221,7 +224,8 @@ export default function PaymentPage() {
           </div>
 
           {/* Payment Method */}
-          <h2 className="text-lg font-semibold pt-4">Metode Pembayaran</h2>
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold">Metode Pembayaran</h2>
           <RadioGroup
             value={selectedPayment}
             onValueChange={setSelectedPayment}
@@ -257,7 +261,8 @@ export default function PaymentPage() {
                 </CardContent>
               </Card>
             ))}
-          </RadioGroup>
+            </RadioGroup>
+          </div>
         </div>
 
         {/* Order Summary */}

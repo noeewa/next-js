@@ -95,44 +95,45 @@ export default function ProjectDetailPage({ params }: { params: { projectName: s
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-        <div className="flex items-start gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pb-6 border-b">
+        <div className="flex items-start gap-4 flex-1">
           <Link href="/dashboard">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="mt-0.5">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
-          <div>
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold">{project.name}</h1>
+          <div className="flex-1">
+            <div className="flex items-center gap-3 flex-wrap">
+              <h1 className="text-3xl font-bold">{project.name}</h1>
               <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.active.bgColor} ${statusConfig.active.textColor}`}>
                 {statusConfig.active.label}
               </span>
             </div>
-            <p className="text-muted-foreground">{project.description}</p>
+            <p className="text-muted-foreground text-sm mt-1">{project.description}</p>
           </div>
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <Button 
-            variant={isActive ? "destructive" : "default"}
+            variant={isActive ? "destructive" : "outline"}
             onClick={() => setIsActive(!isActive)}
+            className="gap-2"
           >
             {isActive ? (
               <>
-                <Pause className="mr-2 h-4 w-4" />
-                Matikan
+                <Pause className="h-4 w-4" />
+                <span className="hidden sm:inline">Matikan</span>
               </>
             ) : (
               <>
-                <Play className="mr-2 h-4 w-4" />
-                Aktifkan
+                <Play className="h-4 w-4" />
+                <span className="hidden sm:inline">Aktifkan</span>
               </>
             )}
           </Button>
-          <Button variant="outline">
-            <Edit className="mr-2 h-4 w-4" />
-            Edit
+          <Button variant="outline" className="gap-2">
+            <Edit className="h-4 w-4" />
+            <span className="hidden sm:inline">Edit</span>
           </Button>
         </div>
       </div>
@@ -140,55 +141,55 @@ export default function ProjectDetailPage({ params }: { params: { projectName: s
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Pesan</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Pesan</CardTitle>
+            <MessageSquare className="h-4 w-4 text-primary opacity-60" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{project.stats.messages.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <TrendingUp className="h-3 w-3 text-green-500" />
+            <div className="text-3xl font-bold">{project.stats.messages.toLocaleString()}</div>
+            <p className="text-xs text-green-600 dark:text-green-400 mt-1 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3" />
               +12% dari bulan lalu
             </p>
           </CardContent>
         </Card>
         
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pengguna Aktif</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Pengguna Aktif</CardTitle>
+            <Users className="h-4 w-4 text-primary opacity-60" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{project.stats.users}</div>
-            <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <TrendingUp className="h-3 w-3 text-green-500" />
+            <div className="text-3xl font-bold">{project.stats.users}</div>
+            <p className="text-xs text-green-600 dark:text-green-400 mt-1 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3" />
               +8% dari bulan lalu
             </p>
           </CardContent>
         </Card>
         
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Waktu Respons</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Waktu Respons</CardTitle>
+            <Clock className="h-4 w-4 text-primary opacity-60" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{project.stats.avgResponseTime}</div>
-            <p className="text-xs text-muted-foreground">
-              Rata-rata
+            <div className="text-3xl font-bold">{project.stats.avgResponseTime}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Rata-rata cepat
             </p>
           </CardContent>
         </Card>
         
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Kepuasan</CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Kepuasan</CardTitle>
+            <Activity className="h-4 w-4 text-primary opacity-60" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{project.stats.satisfaction}%</div>
-            <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <TrendingUp className="h-3 w-3 text-green-500" />
+            <div className="text-3xl font-bold">{project.stats.satisfaction}%</div>
+            <p className="text-xs text-green-600 dark:text-green-400 mt-1 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3" />
               +2.3% dari bulan lalu
             </p>
           </CardContent>

@@ -112,16 +112,16 @@ export default function CreateProjectPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-start gap-4">
         <Link href="/dashboard">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="mt-0.5">
             <ArrowLeft className="h-5 w-5" />
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold">Buat Proyek Baru</h1>
-          <p className="text-muted-foreground">
-            Buat chatbot AI kustom untuk bisnis Anda
+          <h1 className="text-3xl font-bold">Buat Proyek Baru</h1>
+          <p className="text-muted-foreground text-sm">
+            Buat chatbot AI yang dipersonalisasi untuk bisnis Anda dalam beberapa langkah mudah
           </p>
         </div>
       </div>
