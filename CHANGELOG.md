@@ -2,6 +2,61 @@
 
 All notable changes to ChatBot Builder will be documented in this file.
 
+## [1.1.0] - 2024 (Navbar Refactor)
+
+### 🚀 Navigation Architecture Overhaul
+
+#### Changed
+- **Sidebar to Top Navbar**: Replaced left sidebar with GitHub-style top navbar
+  - Global AppNavbar with logo, breadcrumb, user menu
+  - Sticky positioning for better UX
+  - Mobile-responsive with hamburger menu
+  
+- **Project Navigation**: Introduced ProjectNav component
+  - Shows conditionally only on project detail pages
+  - Project-specific tabs: Overview, Conversations, Analytics, Integrations, Settings
+  - Project status badge and action buttons
+  - Sticky positioning below main navbar
+
+- **Dashboard Layout**: Complete refactor
+  - Removed sidebar state management (collapse/expand)
+  - Simplified to full-width responsive container (max-w-7xl)
+  - Clean separation of concerns
+
+#### Added
+- **AppNavbar Component** (`src/components/app-navbar.tsx`)
+  - Global sticky navbar
+  - User dropdown menu with Settings, Billing, Logout
+  - Dynamic breadcrumb based on route
+  - Mobile menu support
+
+- **ProjectNav Component** (`src/components/project-nav.tsx`)
+  - Project-specific navigation
+  - Status-based styling (Active, Draft, Inactive)
+  - Tab-based navigation with URL routing
+  - Back button to dashboard
+
+- **Documentation**
+  - NAVBAR_STRUCTURE.md - Detailed navbar architecture
+  - NAVBAR_UPDATE_SUMMARY.md - Change summary and rationale
+
+#### Removed
+- Left sidebar (desktop + mobile)
+- Sidebar collapse/expand functionality
+- Duplicate project header in detail page
+
+#### Fixed
+- Navigation consistency across all dashboard pages
+- Responsive design improvements
+- Z-index stack management (navbar above project-nav)
+
+#### Tech Debt Reduction
+- Reduced layout complexity (280+ lines → 20 lines in dashboard/layout.tsx)
+- Centralized navigation logic
+- Easier maintenance and feature additions
+
+---
+
 ## [1.0.0] - 2024
 
 ### 🎉 Initial UI Release
