@@ -57,6 +57,9 @@ npx shadcn@latest add card
 
 ## 🏗️ 1. Architecture
 
+<details>
+<summary>Klik untuk expand/close</summary>
+
 ```
 ┌────────────────────┐
 │    User Browser    │
@@ -82,7 +85,13 @@ npx shadcn@latest add card
      │ Cerebras / OpenAI) │
      └────────────────────┘
 ```
+
+</details>
+
 ## 🏗️ 2. Information Architecture
+
+<details>
+<summary>Klik untuk expand/close</summary>
 
 
 Marketing Mode (Pre-Auth)
@@ -129,7 +138,12 @@ Admin Mode
    ├── System Moderation
    └── Global Configuration
 
+</details>
+
 ## 🏗️ 3. User Flow Client
+
+<details>
+<summary>Klik untuk expand/close</summary>
 
 User
  └── Landing (/)
@@ -145,7 +159,12 @@ User
                  ↓
              /api/ai → AI Provider
 
+</details>
+
 ## 🏗️ 4. User Flow Admin
+
+<details>
+<summary>Klik untuk expand/close</summary>
 
 User
  └── Landing (/)
@@ -153,3 +172,5 @@ User
      └── Dashboard (/dashboard)
          ├── Approve Project (/dashboard)
          └── Finance Console (/dashboard)
+
+</details>
