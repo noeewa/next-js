@@ -57,9 +57,6 @@ npx shadcn@latest add card
 
 ## 🏗️ 1. Architecture
 
-<details>
-<summary>Klik untuk expand/close</summary>
-
 ```
 ┌────────────────────┐
 │    User Browser    │
@@ -90,10 +87,7 @@ npx shadcn@latest add card
 
 ## 🏗️ 2. Information Architecture
 
-<details>
-<summary>Klik untuk expand/close</summary>
-
-
+```
 Marketing Mode (Pre-Auth)
    ├── Landing Page
    ├── Features
@@ -137,14 +131,12 @@ Admin Mode
    ├── Platform Analytics
    ├── System Moderation
    └── Global Configuration
-
-</details>
+```
 
 ## 🏗️ 3. User Flow Client
 
-<details>
-<summary>Klik untuk expand/close</summary>
 
+```
 User
  └── Landing (/)
      ├── Login (/login)
@@ -158,19 +150,16 @@ User
              └── Settings
                  ↓
              /api/ai → AI Provider
-
-</details>
+```
 
 ## 🏗️ 4. User Flow Admin
 
-<details>
-<summary>Klik untuk expand/close</summary>
 
+```
 User
  └── Landing (/)
      ├── Login (/login)
      └── Dashboard (/dashboard)
          ├── Approve Project (/dashboard)
          └── Finance Console (/dashboard)
-
-</details>
+```
