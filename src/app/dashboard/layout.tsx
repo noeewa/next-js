@@ -1,5 +1,3 @@
-"use client"
-
 import { ReactNode } from 'react'
 import { AppNavbar } from '@/components/app-navbar'
 import { Metadata } from 'next'
