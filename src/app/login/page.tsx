@@ -1,14 +1,41 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { authenticateUser, loginSession } from "@/lib/auth"
+import { useState } from "react"
 
 export default function LoginPage() {
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setIsLoading(true)
+    setError("")
+
+    const formData = new FormData(e.currentTarget)
+    const username = formData.get("username") as string
+    const password = formData.get("password") as string
+
+    const result = await authenticateUser(username, password)
+
+    if (result.success) {
+      loginSession(result.user!)
+      router.replace("/dashboard")
+    } else {
+      setError(result.error || "Login failed")
+    }
+
+    setIsLoading(false)
+  }
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
       {/* Logo */}
@@ -25,17 +52,22 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <CardContent className="space-y-4">
+            {error && (
+              <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">
+                {error}
+              </div>
+            )}
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="username">Username</Label>
               <Input 
-                id="email" 
-                name="email"
-                type="email" 
-                placeholder="you@example.com" 
+                id="username" 
+                name="username"
+                type="text" 
+                placeholder="admin" 
                 required 
-                autoComplete="email"
+                autoComplete="username"
               />
             </div>
             
@@ -59,8 +91,8 @@ export default function LoginPage() {
               />
             </div>
             
-            <Button type="submit" className="w-full">
-              Masuk
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Masuk..." : "Masuk"}
             </Button>
             
             <div className="relative">

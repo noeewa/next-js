@@ -1,9 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Sparkles, Menu, X, LogOut, Settings } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -12,10 +12,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { getCurrentUser, logoutSession } from "@/lib/auth"
 
 export function AppNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
+  const [currentUser, setCurrentUser] = useState<string | null>(null)
+
+  useEffect(() => {
+    setCurrentUser(getCurrentUser())
+  }, [])
 
   // Get breadcrumb info based on current route
   const getBreadcrumb = () => {
@@ -67,14 +74,14 @@ export function AppNavbar() {
                     className="rounded-full w-10 h-10 p-0"
                   >
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-white text-sm font-semibold">
-                      JD
+                      {currentUser ? currentUser.charAt(0).toUpperCase() : "U"}
                     </div>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
                   <div className="px-2 py-1.5 text-sm">
-                    <p className="font-semibold">John Doe</p>
-                    <p className="text-xs text-muted-foreground">john@example.com</p>
+                    <p className="font-semibold">{currentUser || "User"}</p>
+                    <p className="text-xs text-muted-foreground">{currentUser}@example.com</p>
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
@@ -85,7 +92,12 @@ export function AppNavbar() {
                     <span>Tagihan</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => {
+                      logoutSession()
+                      router.replace("/login")
+                    }}
+                  >
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Keluar</span>
                   </DropdownMenuItem>
@@ -129,7 +141,10 @@ export function AppNavbar() {
             <Button
               variant="ghost"
               className="w-full justify-start"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                logoutSession()
+                router.replace("/login")
+              }}
             >
               Keluar
             </Button>

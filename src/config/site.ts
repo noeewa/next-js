@@ -2,6 +2,12 @@
  * Site Configuration
  */
 
+// Simple auth credentials for temporary admin account
+export const authCredentials = {
+  username: 'admin',
+  password: 'admin',
+}
+
 export const siteConfig = {
   name: 'ChatBot Builder',
   description:
